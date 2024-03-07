@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import Products from './components/Products';
 import Home from './components/Home';
+import NewProduct from './components/NewProduct';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
 
@@ -32,11 +33,17 @@ function App() {
           className={currentRoute=="products"?"btn btn-info ms-1":"btn btn-outline-info ms-1"} 
           to={"/products"}>Products</Link>
         </li>
+        <li>
+          <Link onClick={() => setCurrentRoute("newProduct")} 
+          className={currentRoute=="newProduct"?"btn btn-info ms-1":"btn btn-outline-info ms-1"} 
+          to={"/newProduct"}>New Product</Link>
+        </li>
       </ul>
      </nav>
       <Routes>
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/products' element={<Products/>}></Route>
+        <Route path='/newProduct' element={<NewProduct/>}></Route>
       </Routes>
     </BrowserRouter>
   );
