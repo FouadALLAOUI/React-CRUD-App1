@@ -23,12 +23,12 @@ export default function Products() {
 
   const handleDeleteProduct=(product)=>{
     deleteProduct(product).then((resp)=>{
-       handleGetProducts();
+      //handleGetProducts();
+      const newProducts=products.filter(p => p.id!=product.id);
+      setProducts(newProducts);
     });
-    //const newProducts=products.filter(p => p.id!=product.id);
-    //setProducts(newProducts);
   };
-  
+
   const handleCheckProduct=(product)=>{
     const newProducts=products.map(p => {
       if (p.id==product.id){p.checked = !p.checked;}
