@@ -4,3 +4,6 @@ export const productsApi = axios.create({
     baseURL : "http://localhost:9000/products"
 });
 
+const getProducts=()=>{
+    return productsApi.get("/products");
+}
