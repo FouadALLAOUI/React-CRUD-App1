@@ -1,14 +1,14 @@
 import axios from "axios"
 
 export const productsApi = axios.create({
-    baseURL : "http://localhost:9000/products"
+    baseURL : "http://localhost:9000"
 });
 
 export const getProducts=()=>{
     return productsApi.get("/products");
 }
 
-export const deleteProducts=(product)=>{
+export const deleteProduct=(product)=>{
     return productsApi.delete(`/products/${product.id}`);
 }
 

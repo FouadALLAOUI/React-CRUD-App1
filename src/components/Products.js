@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { deleteProduct, getProducts } from "../app/app";
 
 export default function Products() {
   //const [products, setProducts] =useState([]);
@@ -13,20 +14,21 @@ export default function Products() {
   },[]);
 
   const handleGetProducts = ()=>{
-    axios.get("http://localhost:9000/products")
-    .then(resp=>{
-      const products=resp.data;
-      setProducts(products);
+    getProducts().then(resp=>{
+      setProducts(resp.data);
+    }).catch((err)=>{
+      console.log(err)
     })
-    .catch(err=>{
-      console.log(err);
-    });
   }
 
   const handleDeleteProduct=(product)=>{
-    const newProducts=products.filter(p => p.id!=product.id);
-    setProducts(newProducts);
-  }
+    deleteProduct(product).then((resp)=>{
+       handleGetProducts();
+    });
+    //const newProducts=products.filter(p => p.id!=product.id);
+    //setProducts(newProducts);
+  };
+  
   const handleCheckProduct=(product)=>{
     const newProducts=products.map(p => {
       if (p.id==product.id){p.checked = !p.checked;}

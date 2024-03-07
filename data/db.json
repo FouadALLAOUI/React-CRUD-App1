@@ -1,9 +1,22 @@
 {
-    "products":[
-        {"id":1, "name": "Computer", "price": 12547, "checked": true},
-        {"id":2, "name": "Smart Phone", "price": 72437, "checked": false},
-        {"id":3, "name": "Server", "price": 23547, "checked": false},
-        {"id":4, "name": "Phone", "price": 45631, "checked": false},
-        {"id":5, "name": "Camera", "price": 2326, "checked": true}
-    ]
+  "products": [
+    {
+      "id": "1",
+      "name": "Computer",
+      "price": 12547,
+      "checked": true
+    },
+    {
+      "id": "2",
+      "name": "Smart Phone",
+      "price": 72437,
+      "checked": false
+    },
+    {
+      "id": "3",
+      "name": "Server",
+      "price": 23547,
+      "checked": false
+    }
+  ]
 }
