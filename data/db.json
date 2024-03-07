@@ -10,13 +10,31 @@
       "id": "2",
       "name": "Smart Phone",
       "price": 72437,
-      "checked": false
+      "checked": true
     },
     {
       "id": "3",
       "name": "Server",
       "price": 23547,
-      "checked": false
+      "checked": true
+    },
+    {
+      "id": "4",
+      "name": "Phone",
+      "price": 45631,
+      "checked": true
+    },
+    {
+      "id": "5",
+      "name": "iPhone",
+      "price": 16494,
+      "checked": true
+    },
+    {
+      "id": "6",
+      "name": "iPad",
+      "price": 63000,
+      "checked": true
     }
   ]
 }
