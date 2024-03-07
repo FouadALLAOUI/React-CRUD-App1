@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { saveProduct } from '../app/app';
+import { json } from 'react-router-dom';
 //Pay Attention : JSX != HTML+CSS
 function NewProduct() {
   
@@ -6,12 +8,20 @@ function NewProduct() {
   const [price, setPrice] = useState(0);
   const [checked, setChecked] = useState(false);
   
+  const handleSaveProduct = (event) =>{
+    event.preventDefault();
+    let product = {name, price, checked};
+    saveProduct(product).then((resp)=>{
+      alert(JSON.stringify(resp.data));
+    });
+  }
+
   return (
     <div className='row p-1'>
       <div className='col-md-6'>
         <div className='card'>
           <div className='card-body'>
-            <form >
+            <form onSubmit={handleSaveProduct} >
               <div className='mb-3'>
                 <label className='form-lable'>Name : </label>
                 <input onChange={(e)=>setName(e.target.value)} 
