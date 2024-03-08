@@ -1,17 +1,29 @@
-import React, { useState } from 'react'
-import { saveProduct } from '../app/app';
-import { json } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { getProduct, saveProduct, updateProduct,  } from '../app/app';
+import { json, useParams } from 'react-router-dom';
 //Pay Attention : JSX != HTML+CSS
 function EditProduct() {
-  
+  const {id} = useParams();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [checked, setChecked] = useState(false);
   
-  const handleSaveProduct = (event) =>{
+  useEffect(()=>{
+    handleGetProductById(id);
+  },[]);
+  const handleGetProductById=(id) =>{
+    getProduct(id).then(resp=>{
+      let prod =resp.data;
+      setName(prod.name);
+      setChecked(prod.checked);
+      setPrice(prod.price);
+    });
+  }  
+
+  const handleUpdateProduct = (event) =>{
     event.preventDefault();
-    let product = {name, price, checked};
-    saveProduct(product).then((resp)=>{
+    let product = {id, name, price, checked};
+    updateProduct(product).then((resp)=>{
       alert(JSON.stringify(resp.data));
     });
   }
@@ -21,7 +33,7 @@ function EditProduct() {
       <div className='col-md-6'>
         <div className='card'>
           <div className='card-body'>
-            <form onSubmit={handleSaveProduct} >
+            <form onSubmit={handleUpdateProduct} >
               <div className='mb-3'>
                 <label className='form-lable'>Name : </label>
                 <input onChange={(e)=>setName(e.target.value)} 

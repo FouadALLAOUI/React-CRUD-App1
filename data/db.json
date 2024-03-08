@@ -2,9 +2,9 @@
   "products": [
     {
       "id": "1",
-      "name": "Computer",
+      "name": "Computer PC",
       "price": 12547,
-      "checked": false
+      "checked": "on"
     },
     {
       "id": "2",
