@@ -2,10 +2,15 @@ import React, { useContext } from 'react'
 import { AppContext } from '../app/app'
 
 function Stats() {
-  const [state, setState] = useContext(AppContext);
-  return (
-    <div>{state.products.length}</div>
-  )
+    const [state, setState] = useContext(AppContext);
+    return (
+        <button type="button" className="btn btn-primary position-relative">
+            Caddy
+            <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                {state.products.length}
+            </span>
+        </button>
+    )
 }
 
 export default Stats

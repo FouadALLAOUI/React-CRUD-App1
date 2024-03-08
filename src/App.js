@@ -25,7 +25,7 @@ function App() {
     //Routage    
     <AppContext.Provider value={useAppState()}>
     <BrowserRouter>
-     <nav className='m-1 p-1 border border-info'>
+     <nav className='m-1 p-1 border border-info navbar navbar-expand-lg navbar-light bg-light'>
       <ul className='nav na-pills'>
         <li>
           <Link onClick={() => setCurrentRoute("home")} 
@@ -43,7 +43,7 @@ function App() {
           to={"/newProduct"}>New Product</Link>
         </li>
       </ul>
-      <ul>
+      <ul className='nav navbar-nav'>
         <li>
           <Stats></Stats>
         </li>
