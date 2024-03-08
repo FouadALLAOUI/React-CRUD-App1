@@ -1,15 +1,15 @@
 import { faCheckCircle, faCircle, faEdit, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { checkProduct, deleteProduct, getProducts } from "../app/app";
+import { AppContext, checkProduct, deleteProduct, getProducts } from "../app/app";
 
 export default function Products() {
   //const [products, setProducts] =useState([]);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
-
+  const [state, setState] = useContext(AppContext);
   useEffect(() => {
     handleGetProducts(state.keyword, state.currentPage, state.pageSize);
   }, []);
@@ -127,7 +127,7 @@ export default function Products() {
                 {state.totalPages > 0 && (
                   <ul className="nav nav-pills">
                     {(new Array(state.totalPages).fill(0)).map((v, index) => (
-                      <li key={index}>
+                      <li key={index +1}>
                         <button 
                         onClick={() => handleGotoPage(index + 1)} 
                         className={(index+1)==state.currentPage?'btn btn-info ms-1':'btn btn-outline-info ms-1'}

@@ -39,7 +39,7 @@ function NewProduct() {
                 onChange={(e)=>setChecked(e.target.value)} 
                  checked={checked}//Tow way Binding
                  />
-                  <label className="form-check-label" for="flexCheckChecked">
+                  <label className="form-check-label" htmlFor="flexCheckChecked">
                     Checked
                   </label>
               </div>

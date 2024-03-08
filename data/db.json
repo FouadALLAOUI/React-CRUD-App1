@@ -15,8 +15,8 @@
     {
       "id": "3",
       "name": "Server",
-      "price": 23547,
-      "checked": false
+      "price": "55557",
+      "checked": "on"
     },
     {
       "id": "d422",
