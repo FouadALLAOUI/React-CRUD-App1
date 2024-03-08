@@ -8,7 +8,7 @@ import NewProduct from './components/NewProduct';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
 import EditProduct from './components/EditProduct';
-import { AppContext } from './app/app';
+import { AppContext, useAppState } from './app/app';
 
 function App() {
   //hooks-encapsule un logique
@@ -22,7 +22,7 @@ function App() {
 
   return (
     //Routage    
-    <AppContext.Provider value={}>
+    <AppContext.Provider value={useAppState}>
     <BrowserRouter>
      <nav className='m-1 p-1 border border-info'>
       <ul className='nav na-pills'>
