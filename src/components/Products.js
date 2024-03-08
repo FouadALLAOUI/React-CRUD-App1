@@ -9,13 +9,6 @@ export default function Products() {
   //const [products, setProducts] =useState([]);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  const [state, setState] = useState({
-    products: [],
-    currentPage: 1,
-    pageSize: 4,
-    keyword: "",
-    totalPages: 1
-  });
 
   useEffect(() => {
     handleGetProducts(state.keyword, state.currentPage, state.pageSize);

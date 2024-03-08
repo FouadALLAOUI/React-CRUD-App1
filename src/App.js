@@ -22,7 +22,7 @@ function App() {
 
   return (
     //Routage    
-    <AppContext.Provider>
+    <AppContext.Provider value={}>
     <BrowserRouter>
      <nav className='m-1 p-1 border border-info'>
       <ul className='nav na-pills'>
