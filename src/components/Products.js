@@ -2,12 +2,13 @@ import { faCheckCircle, faCircle, faEdit, faSearch, faTrash } from '@fortawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { checkProduct, deleteProduct, getProducts } from "../app/app";
 
 export default function Products() {
   //const [products, setProducts] =useState([]);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   const [state, setState] = useState({
     products: [],
     currentPage: 1,
@@ -118,7 +119,9 @@ export default function Products() {
                           </button>
                         </td>
                         <td>
-                          <button className='btn btn-outline-success'>
+                          <button onClick={()=>navigate(`/editProduct/${product.id}`)} 
+                            className='btn btn-outline-success'
+                          >
                             <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon>
                           </button>
                         </td>
