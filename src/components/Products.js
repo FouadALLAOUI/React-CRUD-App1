@@ -1,4 +1,4 @@
-import { faCheckCircle, faCircle, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faCircle, faEdit, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
@@ -7,6 +7,7 @@ import { checkProduct, deleteProduct, getProducts } from "../app/app";
 
 export default function Products() {
   //const [products, setProducts] =useState([]);
+  const [query, setQuery] = useState("");
   const [state, setState] = useState({
     products: [],
     currentPage: 1,
@@ -56,20 +57,26 @@ export default function Products() {
     });
   }
 
-  const handleGotpPage = (page) => {
+  const handleGotoPage = (page) => {
     handleGetProducts(state.keyword, page, state.pageSize)
+  }
+
+  const handleSearch=(event)=>{
+    event.preventDefault();
+    //setState({...state, keyword: query});
+    handleGetProducts(query, 1, state.pageSize);
   }
 
   return (
     <div className='p-1 m-1'>
       <div className='row'>
         <div className='col-md-6'>
-          <div className='card'>
-            <div className='card-body'>
-               <form>
+        <div className='card m-2'>
+          <div className='card-body'>
+               <form onSubmit={handleSearch}>
                 <div className='row g-2'>
                   <div className='col-auto'>
-                    <input className='form-control'></input>
+                    <input value={query} onChange={(e)=>setQuery(e.target.value)} className='form-control'></input>
                   </div>
                   <div className='col-auto'>
                     <button className='btn btn-success'> <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon> Search</button>
@@ -77,6 +84,10 @@ export default function Products() {
                 </div>
                </form>
             </div>
+            <div className='card-body'>
+          </div>
+        </div>
+          <div className='card m-2'>
             <div className='card-body'>
               <table className='table'>
                 <thead>
@@ -106,6 +117,11 @@ export default function Products() {
                             <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
                           </button>
                         </td>
+                        <td>
+                          <button className='btn btn-outline-success'>
+                            <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon>
+                          </button>
+                        </td>
                       </tr>
                     ))
                   }
@@ -117,7 +133,7 @@ export default function Products() {
                     {(new Array(state.totalPages).fill(0)).map((v, index) => (
                       <li key={index}>
                         <button 
-                        onClick={() => handleGotpPage(index + 1)} 
+                        onClick={() => handleGotoPage(index + 1)} 
                         className={(index+1)==state.currentPage?'btn btn-info ms-1':'btn btn-outline-info ms-1'}
                       >
                           {index + 1}

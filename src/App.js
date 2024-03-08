@@ -7,6 +7,7 @@ import Home from './components/Home';
 import NewProduct from './components/NewProduct';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
+import EditProduct from './components/EditProduct';
 
 function App() {
   //hooks-encapsule un logique
@@ -44,6 +45,7 @@ function App() {
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/products' element={<Products/>}></Route>
         <Route path='/newProduct' element={<NewProduct/>}></Route>
+        <Route path='/editProduct/:id' element={<EditProduct/>}></Route>
       </Routes>
     </BrowserRouter>
   );
