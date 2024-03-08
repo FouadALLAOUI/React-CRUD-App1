@@ -1,4 +1,8 @@
 import axios from "axios"
+import { createContext, useContext } from "react";
+
+export const AppContext = createContext();
+
 
 export const productsApi = axios.create({
     baseURL : "http://localhost:9000"
