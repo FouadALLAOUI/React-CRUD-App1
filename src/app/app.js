@@ -4,8 +4,6 @@ import { useState } from "react";
 
 export const AppContext = createContext();
 
-
-
 export const productsApi = axios.create({
     baseURL : "http://localhost:9000"
 });
@@ -42,8 +40,8 @@ export const useAppState=()=>{
         currentPage: 1,
         pageSize: 4,
         keyword: "",
-        totalPages: 1
+        totalPages: 0
       }
     const appState = useState(initialState);
-    return appState
+    return appState;
 }
