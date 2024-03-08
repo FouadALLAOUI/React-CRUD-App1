@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { AppContext, checkProduct, deleteProduct, getProducts } from "../app/app";
+import SearchForm from './SearchForm';
 
 export default function Products() {
   //const [products, setProducts] =useState([]);
@@ -67,16 +68,7 @@ export default function Products() {
         <div className='col-md-6'>
         <div className='card m-2'>
           <div className='card-body'>
-               <form onSubmit={handleSearch}>
-                <div className='row g-2'>
-                  <div className='col-auto'>
-                    <input value={query} onChange={(e)=>setQuery(e.target.value)} className='form-control'></input>
-                  </div>
-                  <div className='col-auto'>
-                    <button className='btn btn-success'> <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon> Search</button>
-                  </div>
-                </div>
-               </form>
+            <SearchForm handleSearch={handleSearch} setQuery={setQuery} query={query}></SearchForm>
             </div>
             <div className='card-body'>
           </div>
