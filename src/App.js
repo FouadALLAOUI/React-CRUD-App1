@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
 import EditProduct from './components/EditProduct';
 import { AppContext, useAppState } from './app/app';
+import Stats from './components/Stats';
 
 function App() {
   //hooks-encapsule un logique
@@ -40,6 +41,11 @@ function App() {
           <Link onClick={() => setCurrentRoute("newProduct")} 
           className={currentRoute=="newProduct"?"btn btn-info ms-1":"btn btn-outline-info ms-1"} 
           to={"/newProduct"}>New Product</Link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <Stats></Stats>
         </li>
       </ul>
      </nav>
