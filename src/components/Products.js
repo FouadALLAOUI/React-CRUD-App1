@@ -8,7 +8,7 @@ import SearchForm from './SearchForm';
 
 export default function Products() {
   //const [products, setProducts] =useState([]);
-  const [query, setQuery] = useState("");
+
   const navigate = useNavigate();
   const [state, setState] = useContext(AppContext);
   useEffect(() => {
@@ -56,19 +56,13 @@ export default function Products() {
     handleGetProducts(state.keyword, page, state.pageSize)
   }
 
-  const handleSearch=(event)=>{
-    event.preventDefault();
-    //setState({...state, keyword: query});
-    handleGetProducts(query, 1, state.pageSize);
-  }
-
   return (
     <div className='p-1 m-1'>
       <div className='row'>
         <div className='col-md-6'>
         <div className='card m-2'>
           <div className='card-body'>
-            <SearchForm handleSearch={handleSearch} setQuery={setQuery} query={query}></SearchForm>
+            <SearchForm handleGetProducts={handleGetProducts}></SearchForm>
             </div>
             <div className='card-body'>
           </div>

@@ -1,8 +1,18 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-function SearchForm({handleSearch, setQuery, query}) {
-  return (
+import { useState, useContext } from 'react';
+import { AppContext } from '../app/app';
+
+function SearchForm({handleGetProducts}) {
+    const [query, setQuery] = useState("");
+    const [state, setState] = useContext(AppContext);
+    const handleSearch=(event)=>{
+        event.preventDefault();
+        //setState({...state, keyword: query});
+        handleGetProducts(query, 1, state.pageSize);
+    }
+    return (
     <form onSubmit={handleSearch}>
     <div className='row g-2'>
       <div className='col-auto'>
