@@ -2,7 +2,7 @@ import axios from "axios"
 import { createContext, useContext } from "react";
 import { useState } from "react";
 
-export const AppContext = createContext();
+
 
 export const productsApi = axios.create({
     baseURL : "http://localhost:9000"
@@ -34,6 +34,7 @@ export const updateProduct=(product)=>{
     return productsApi.put(`/products/${product.id}`,product);
 }
 
+export const AppContext = createContext();
 export const useAppState=()=>{
     const initialState={
         products: [],
@@ -43,5 +44,5 @@ export const useAppState=()=>{
         totalPages: 0
       }
     const appState = useState(initialState);
-    return appState;
+    return appState
 }
